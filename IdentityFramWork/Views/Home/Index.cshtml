@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+  
+    <style>
+        /* Additional inline styles for demonstration purposes */
+        .image-container {
+            display: flex;
+            flex-direction: column; /* Stack images and text vertically */
+            align-items: center; /* Center items horizontally */
+           /*  text-align: center; /* Center text */ */
+
+        }
+       
+        
+
+        .right-aligned-image {
+            width: 48%; /* Adjust the width as needed */
+            margin-top: 10px; /* Add space between the images and text */
+        }
+
+        .service-description {
+            max-width: 600px; /* Adjust the max-width as needed */
+            margin-top: 20px; /* Add space between the text and images */
+           /* justify-content:center; */
+        }
+       .Description {
+           display:flex;
+       }
+    </style>
+    <title>@ViewData["Title"]</title>
+
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome to OthompAutoShop</h1>
+    </div>
+
+    <div class="image-container">
+        <img src="/Image/logo.jpg" alt="Description of the image" width="100%">
+
+        <div class="Description">
+        <!-- Use a Panel control to contain the right-aligned image -->
+        <asp:Panel runat="server" CssClass="right-aligned-image">
+            <img src="~/Image/THEME_CAR.jpg" width="50%",  />
+        </asp:Panel>
+
+        <!-- Additional service description -->
+        <div class="service-description">
+            <p>We specialize in car repairs and offer a wide range of services, including:</p>
+            <ul>
+                <li>Engine diagnostics and repair</li>
+                <li>Brake system maintenance</li>
+                <li>Transmission services</li>
+                <li>Vehicle inspection and tune-ups</li>
+            </ul>
+            <p>Additionally, we provide expert guidance on the purchase of high-quality car parts to ensure your vehicle's optimal performance.</p>
+        </div>
+        </div>
+    </div>
+
+
