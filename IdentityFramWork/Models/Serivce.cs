@@ -1,6 +1,6 @@
 ﻿namespace IdentityFramWork.Models
 {
-    public class Service
+    public class Serivce
     {
         public int Id { get; set; }
 

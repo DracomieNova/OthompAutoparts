@@ -11,7 +11,7 @@ namespace IdentityFramWork.Controllers
         public AutoPartController() 
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7198/api/AutoPart");
+            _httpClient.BaseAddress = new Uri("https://localhost:7152/api/AutoPart");
               
         }
 

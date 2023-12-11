@@ -22,7 +22,7 @@ namespace backendAPI.Controllers
         [HttpGet]
         public IActionResult Getinfo()
         {
-            var content = _context.info.Include(b => b.Parts).Include(b => b.Service).ToList();
+            var content = _context.info.ToList();
 
             if (content == null)
             {
@@ -74,8 +74,7 @@ namespace backendAPI.Controllers
             try
             {
                 var pinfo = _context.info
-                    .Include(b => b.Parts)
-                    .Include(b => b.Service)
+                   
                     .FirstOrDefault(x => x.Id == model.Id);
 
                 if (pinfo == null)
@@ -84,9 +83,9 @@ namespace backendAPI.Controllers
                 }
                // pinfo.EmployeeId = model.EmployeeId;
                // pinfo.Service = model.Service;
-                pinfo.ServiceId = model.ServiceId;
+             
                 pinfo.CustomerName = model.CustomerName;
-                pinfo.PartsId = model.PartsId;
+                
                 // Add other properties you want to update
 
                 _context.Update(pinfo);

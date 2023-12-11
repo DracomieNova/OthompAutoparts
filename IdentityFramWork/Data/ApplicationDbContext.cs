@@ -45,5 +45,7 @@ namespace IdentityFramWork.Data
                 option.ToTable(name: "UserTokens");
             });
         }
+        public DbSet<IdentityFramWork.Models.MainPointVM>? MainPointVM { get; set; }
+        public DbSet<IdentityFramWork.Models.Parts>? Parts { get; set; }
     }
 }

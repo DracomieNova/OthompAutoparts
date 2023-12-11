@@ -5,7 +5,10 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "backendAPI", "backendAPI\backendAPI.csproj", "{8894F659-E9DF-4440-8532-772A5B3458CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityFramwork", "IdentityFramwork\IdentityFramwork.csproj", "{0219B181-22D8-464F-AE1C-19999A9868EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityFramwork", "IdentityFramwork\IdentityFramwork.csproj", "{0219B181-22D8-464F-AE1C-19999A9868EB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8894F659-E9DF-4440-8532-772A5B3458CE} = {8894F659-E9DF-4440-8532-772A5B3458CE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

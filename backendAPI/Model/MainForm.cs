@@ -13,15 +13,7 @@ namespace backendAPI.Model
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
 
-        public int PartsId { get; set; }
-        public int ServiceId { get; set; }
-
-
-        [ForeignKey("PartsId")]
-        public virtual Parts? Parts { get; set; }
-
-        [ForeignKey("ServiceId")]
-        public virtual Serivce? Service { get; set; }
+       
 
     }
 }
