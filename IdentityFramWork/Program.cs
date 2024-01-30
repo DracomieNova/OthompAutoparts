@@ -1,3 +1,4 @@
+using IdentityFramwork.Controllers.Utilities;
 using IdentityFramWork.Data;
 using IdentityFramWork.Models;
 using Microsoft.AspNetCore.Identity;
@@ -18,6 +19,19 @@ builder.Services.AddIdentity<ApplicationUser,IdentityRole>()
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+
+////////services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>()
+////////            .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    await SeedData.Initialize(serviceProvider);
+}
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

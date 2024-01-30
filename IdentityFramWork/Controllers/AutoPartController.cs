@@ -1,18 +1,20 @@
 ﻿using IdentityFramWork.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace IdentityFramWork.Controllers
 {
+    [Authorize]
     public class AutoPartController : Controller
     {
         private readonly HttpClient _httpClient;
-        public AutoPartController() 
+        public AutoPartController()
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("https://localhost:7152/api/AutoPart");
-              
+
         }
 
         public async Task<IActionResult> Index()
@@ -37,10 +39,10 @@ namespace IdentityFramWork.Controllers
                 var data = response.Content.ReadAsStringAsync().Result;
                 //Deserialzation
                 mainPointVM = JsonConvert.DeserializeObject<MainPointVM>(data);
-                return View(mainPointVM); 
+                return View(mainPointVM);
             }
             return View();
-                
+
         }
         [HttpGet]
         public IActionResult Create()
@@ -49,10 +51,10 @@ namespace IdentityFramWork.Controllers
             return View(mainPointVM);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(MainPointVM mainPointVM) 
+        public async Task<IActionResult> Create(MainPointVM mainPointVM)
         {
             string jsonContent = JsonConvert.SerializeObject(mainPointVM);
-            var content = new StringContent(jsonContent,Encoding.UTF8, "application/json");
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _httpClient.PostAsync($"{_httpClient.BaseAddress}", content);
             if (response.IsSuccessStatusCode)
             {
@@ -61,6 +63,7 @@ namespace IdentityFramWork.Controllers
             return View(mainPointVM);
         }
         [HttpGet]
+        [Authorize (Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             
@@ -77,6 +80,7 @@ namespace IdentityFramWork.Controllers
             return View();
         }
         [HttpPost]
+        
         public IActionResult Edit(MainPointVM model)
         {
             string data = JsonConvert.SerializeObject(model);
@@ -89,6 +93,7 @@ namespace IdentityFramWork.Controllers
             return View();
         }
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             MainPointVM mainPoint = new MainPointVM();
